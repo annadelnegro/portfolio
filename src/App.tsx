@@ -1,121 +1,90 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
 import './App.css'
+import { FloatingDock } from './components/ui/floating-dock'
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBriefcase,
+  IconFolders,
+  IconHome,
+  IconMail,
+  IconUser,
+} from '@tabler/icons-react'
+
+const dockItems = [
+  { title: 'Home', icon: <IconHome className="dock-icon" />, href: '#home' },
+  { title: 'About', icon: <IconUser className="dock-icon" />, href: '#about' },
+  { title: 'Work', icon: <IconBriefcase className="dock-icon" />, href: '#work' },
+  {
+    title: 'Projects',
+    icon: <IconFolders className="dock-icon" />, 
+    href: '#projects',
+  },
+  { title: 'Contact', icon: <IconMail className="dock-icon" />, href: '#contact' },
+  {
+    title: 'GitHub',
+    icon: <IconBrandGithub className="dock-icon" />, 
+    href: 'https://github.com/',
+  },
+  {
+    title: 'LinkedIn',
+    icon: <IconBrandLinkedin className="dock-icon" />, 
+    href: 'https://www.linkedin.com/',
+  },
+]
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
+    <main className="portfolio-page">
+      <div className="portfolio-shell">
+        <section className="hero-card blob" id="home" aria-labelledby="intro-name">
+          <div className="hero-copy">
+            <p className="eyebrow">Portfolio</p>
+            <h1 id="intro-name">Anna Del Negro</h1>
+            <p className="subtitle">SWE @ JP Morgan</p>
+          </div>
+        </section>
+
+        <section className="dock-wrap" aria-label="Primary navigation">
+          <FloatingDock items={dockItems} desktopClassName="portfolio-dock" />
+        </section>
+
+        <section className="about-card" id="about" aria-labelledby="about-title">
+          <h2 id="about-title">About me</h2>
           <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+            I design and build calm, polished digital products with a focus on
+            visual clarity, dependable engineering, and details that make the
+            interface feel finished.
           </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+        </section>
 
-      <div className="ticks"></div>
+        <section className="content-section section-work" id="work" aria-labelledby="work-title">
+          <p className="panel-label">Work</p>
+          <h2 id="work-title">Work experience</h2>
+          <p>
+            Placeholder content for the work anchor. This section can later
+            become a timeline, resume summary, or role highlights.
+          </p>
+        </section>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        <section className="content-section section-projects" id="projects" aria-labelledby="projects-title">
+          <p className="panel-label">Projects</p>
+          <h2 id="projects-title">Selected projects</h2>
+          <p>
+            Placeholder content for projects. You can swap this into
+            screenshots, cards, or case studies once you add real content.
+          </p>
+        </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+        <section className="content-section section-contact" id="contact" aria-labelledby="contact-title">
+          <p className="panel-label">Contact</p>
+          <h2 id="contact-title">Get in touch</h2>
+          <p>
+            Placeholder contact section for email, socials, and any other ways
+            you want people to reach you from the dock.
+          </p>
+        </section>
+      </div>
+    </main>
   )
 }
 
