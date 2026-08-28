@@ -188,7 +188,7 @@ function App() {
                     />
                   </div>
 
-                  <span className="brand-text">University of Central Florida</span>
+                  <span className="brand-text">Senior Design Capstone</span>
                 </div>
 
                 <div className="action-buttons">
@@ -233,7 +233,7 @@ function App() {
                 </h3>
 
                 <p className="repo-description">
-                  Senior Design Capstone. Owned the design and implementation of an automated backend data pipeline using Python, AWS, and PostgreSQL
+                  Owned the design and implementation of an automated backend data pipeline using Python, AWS, and PostgreSQL
                   to process large-scale audit logs, improve data observability, and support scalable analytics workflows.
                 </p>
 
@@ -364,7 +364,7 @@ function App() {
                     />
                   </div>
 
-                  <span className="brand-text">University of Central Florida</span>
+                  <span className="brand-text">Database Systems</span>
                 </div>
 
                 <div className="action-buttons">
@@ -441,7 +441,7 @@ function App() {
                     />
                   </div>
 
-                  <span className="brand-text">University of Central Florida</span>
+                  <span className="brand-text">Processes for Object-Oriented Software Development</span>
                 </div>
 
                 <div className="action-buttons">
@@ -540,7 +540,7 @@ function App() {
                     />
                   </div>
 
-                  <span className="brand-text">University of Central Florida</span>
+                  <span className="brand-text">Mobile Device Software Development</span>
                 </div>
 
                 <div className="action-buttons">
