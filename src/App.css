@@ -1,10 +1,14 @@
 .portfolio-page {
+  position: relative;
   min-height: 100vh;
   background: #000;
   padding: 0 18px;
+  overflow: hidden;
 }
 
 .portfolio-shell {
+  position: relative;
+  z-index: 1;
   width: min(960px, calc(100vw - 36px));
   min-height: calc(100vh - 36px);
   margin: 36px auto 0;
@@ -16,6 +20,166 @@
   background: #99c5ff;
   border-radius: 32px 32px 0 0;
   overflow: hidden;
+}
+
+.star-container {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#stars,
+#stars2,
+#stars3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+}
+
+#stars {
+  width: 1px;
+  height: 1px;
+  box-shadow:
+    126px 203px #fff,
+    288px 1210px #fff,
+    402px 1754px #fff,
+    599px 894px #fff,
+    733px 148px #fff,
+    852px 1633px #fff,
+    1011px 670px #fff,
+    1180px 1368px #fff,
+    1344px 258px #fff,
+    1492px 1199px #fff,
+    1671px 511px #fff,
+    1818px 1738px #fff,
+    1940px 911px #fff,
+    94px 1601px #fff,
+    243px 463px #fff,
+    377px 1032px #fff,
+    514px 1911px #fff,
+    655px 738px #fff,
+    791px 1436px #fff,
+    932px 286px #fff,
+    1074px 1224px #fff,
+    1215px 535px #fff,
+    1366px 1822px #fff,
+    1507px 827px #fff,
+    1649px 1339px #fff,
+    1796px 232px #fff,
+    1918px 1544px #fff,
+    67px 964px #fff,
+    211px 1741px #fff,
+    353px 608px #fff,
+    498px 1265px #fff,
+    642px 324px #fff,
+    786px 1678px #fff,
+    930px 768px #fff,
+    1078px 1487px #fff,
+    1221px 64px #fff,
+    1362px 1098px #fff,
+    1511px 449px #fff,
+    1660px 1850px #fff,
+    1805px 602px #fff,
+    1951px 1289px #fff;
+  animation: animStar 50s linear infinite;
+}
+
+#stars::after {
+  content: "";
+  position: absolute;
+  top: 2000px;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: inherit;
+}
+
+#stars2 {
+  width: 2px;
+  height: 2px;
+  box-shadow:
+    174px 802px #fff,
+    312px 1564px #fff,
+    486px 245px #fff,
+    642px 1133px #fff,
+    819px 1768px #fff,
+    978px 503px #fff,
+    1142px 1292px #fff,
+    1319px 669px #fff,
+    1488px 1687px #fff,
+    1655px 368px #fff,
+    1833px 1011px #fff,
+    1972px 1490px #fff,
+    102px 1326px #fff,
+    267px 587px #fff,
+    433px 1842px #fff,
+    608px 935px #fff,
+    772px 130px #fff,
+    944px 1610px #fff,
+    1126px 746px #fff,
+    1294px 1957px #fff,
+    1479px 860px #fff,
+    1638px 127px #fff,
+    1799px 1405px #fff,
+    1944px 537px #fff;
+  animation: animStar 100s linear infinite;
+}
+
+#stars2::after {
+  content: "";
+  position: absolute;
+  top: 2000px;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: inherit;
+}
+
+#stars3 {
+  width: 3px;
+  height: 3px;
+  box-shadow:
+    220px 991px #fff,
+    502px 1461px #fff,
+    811px 438px #fff,
+    1096px 1710px #fff,
+    1403px 729px #fff,
+    1675px 191px #fff,
+    1936px 1337px #fff,
+    120px 1790px #fff,
+    406px 605px #fff,
+    716px 1185px #fff,
+    996px 165px #fff,
+    1308px 1524px #fff,
+    1593px 936px #fff,
+    1842px 1762px #fff;
+  animation: animStar 150s linear infinite;
+}
+
+#stars3::after {
+  content: "";
+  position: absolute;
+  top: 2000px;
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: inherit;
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-2000px);
+  }
 }
 
 .hero-card {
@@ -143,66 +307,73 @@
   width: 100%;
 }
 
-/* From Uiverse.io by barisdogansutcu */
-.download-button {
+/* From Uiverse.io by Tsiangana */
+.button {
+  --main-focus: #2d8cf0;
+  --font-color: #323232;
+  --bg-color-sub: #dedede;
+  --bg-color: #eee;
+  --main-color: #323232;
   position: relative;
-  border-width: 0;
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
+  width: 136px;
+  height: 36px;
   cursor: pointer;
-  border-radius: 4px;
-  z-index: 1;
-  display: inline-block;
-  margin-top: 18px;
-}
-
-.download-button .docs {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  min-height: 40px;
-  padding: 0 10px;
-  border-radius: 4px;
-  z-index: 1;
-  background-color: #000;
-  border: solid 1px #e8e8e82d;
-  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  background-color: var(--bg-color);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 18px;
+  padding: 0;
 }
 
-.download-button:hover {
-  box-shadow:
-    rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px,
-    rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px,
-    rgba(0, 0, 0, 0.09) 0px -3px 5px;
+.button,
+.button__icon,
+.button__text {
+  transition: all 0.3s;
 }
 
-.download {
+.button .button__text {
+  transform: translateX(10px);
+  color: var(--font-color);
+  font-weight: 600;
+  font-size: 0.84rem;
+}
+
+.button .button__icon {
   position: absolute;
-  inset: 0;
+  transform: translateX(97px);
+  height: 100%;
+  width: 39px;
+  background-color: var(--bg-color-sub);
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 90%;
-  margin: 0 auto;
-  z-index: -1;
-  border-radius: 4px;
-  transform: translateY(0%);
-  background-color: #01e056;
-  border: solid 1px #01e0572d;
-  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-.download-button:hover .download {
-  transform: translateY(100%);
+.button .svg {
+  width: 20px;
+  fill: var(--main-color);
 }
 
-.download svg polyline,
-.download svg line {
-  animation: docs 1s infinite;
+.button:hover {
+  background: var(--bg-color);
+}
+
+.button:hover .button__text {
+  color: transparent;
+}
+
+.button:hover .button__icon {
+  width: 134px;
+  transform: translateX(0);
+}
+
+.button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0px 0px var(--main-color);
 }
 
 .notification {

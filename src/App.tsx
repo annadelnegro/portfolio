@@ -74,6 +74,12 @@ const workTimelineData = workExperience.map((role) => ({
 function App() {
   return (
     <main className="portfolio-page">
+      <div className="star-container" aria-hidden="true">
+        <div id="stars" />
+        <div id="stars2" />
+        <div id="stars3" />
+      </div>
+
       <div className="portfolio-shell">
         <section className="hero-card blob" id="home" aria-labelledby="intro-name">
           <div className="hero-copy">
@@ -95,52 +101,34 @@ function App() {
             I’m a software engineer with roots in Venezuela 🇻🇪, now based in the US 🇺🇸. My first taste of coding was customizing Tumblr themes as a kid, which grew into a love for technology and solving problems. Outside of code, I love traveling and trying new foods.
           </p>
 
-          <a className="download-button" href="/resume.pdf" download>
-            <span className="docs">
+          <button
+            className="button"
+            type="button"
+            onClick={() => {
+              const link = document.createElement('a')
+              link.href = '/resume.pdf'
+              link.download = 'resume.pdf'
+              link.click()
+            }}
+            aria-label="Download resume or CV"
+          >
+            <span className="button__text">Resume/CV</span>
+            <span className="button__icon">
               <svg
-                viewBox="0 0 24 24"
-                width="20"
-                height="20"
+                xmlns="http://www.w3.org/2000/svg"
                 fill="none"
+                viewBox="0 0 35 35"
+                id="bdd05811-e15d-428c-bb53-8661459f9307"
+                data-name="Layer 2"
+                className="svg"
                 aria-hidden="true"
               >
-                <path
-                  d="M7 3h7l5 5v13H7z"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinejoin="round"
-                />
-                <path d="M14 3v5h5" stroke="currentColor" strokeWidth="1.6" />
-              </svg>
-              Resume
-            </span>
-
-            <span className="download" aria-hidden="true">
-              <svg
-                viewBox="0 0 24 24"
-                width="18"
-                height="18"
-                fill="none"
-              >
-                <polyline
-                  points="6 10 12 16 18 10"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <line
-                  x1="12"
-                  y1="4"
-                  x2="12"
-                  y2="15"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                />
+                <path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path>
+                <path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path>
+                <path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path>
               </svg>
             </span>
-          </a>
+          </button>
         </section>
 
         <section className="about-education-wrap" aria-label="Education">
