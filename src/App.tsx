@@ -1,6 +1,8 @@
 import './App.css'
 import { FloatingDock } from './components/ui/floating-dock'
 import { Timeline } from './components/ui/timeline'
+import { Tooltip, TooltipContent, TooltipTrigger } from './components/ui/tooltip'
+import { useEffect, useRef, useState } from 'react'
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -20,16 +22,24 @@ const dockItems = [
     icon: <IconFolders className="dock-icon" />, 
     href: '#projects',
   },
-  { title: 'Contact', icon: <IconMail className="dock-icon" />, href: '#contact' },
+  {
+    title: 'Email',
+    icon: <IconMail className="dock-icon" />,
+    href: 'mailto:annaluciadelnegro@gmail.com',
+  },
   {
     title: 'GitHub',
     icon: <IconBrandGithub className="dock-icon" />, 
-    href: 'https://github.com/',
+    href: 'https://github.com/annadelnegro',
+    target: '_blank',
+    rel: 'noreferrer',
   },
   {
     title: 'LinkedIn',
     icon: <IconBrandLinkedin className="dock-icon" />, 
-    href: 'https://www.linkedin.com/',
+    href: 'https://linkedin.com/in/annadn',
+    target: '_blank',
+    rel: 'noreferrer',
   },
 ]
 
@@ -71,13 +81,79 @@ const workTimelineData = workExperience.map((role) => ({
   ),
 }))
 
+const diceMessages = [
+  'ff: i can speak 4 languages! 🇻🇪🇺🇸🇮🇹🇧🇷',
+  'achievement unlocked: inspected the portfolio too thoroughly 🕳️',
+  'oh hey, what am i doing? probably debugging something that worked yesterday 🐛🐛',
+  'my favorite kind of food is korean 🇰🇷 (at the moment)',
+  'my favorite singer is justin bieber 🎤',
+  'favorite place to travel: Amsterdam ✈️ 🇳🇱',
+  'next place on my must-visit list: brasil 🇧🇷',
+  'listening to: crooked smile by j. cole 🎧',
+  'i love new york city 🌃',
+  'i have 2 doggies 🐶🐶 piglet jose and poe',
+]
+
+function getRandomDiceMessage() {
+  return diceMessages[Math.floor(Math.random() * diceMessages.length)]
+}
+
 function App() {
+  const [diceMessage, setDiceMessage] = useState(() => getRandomDiceMessage())
+  const [isPlaying, setIsPlaying] = useState(false)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.08
+    }
+  }, [])
+
+  const toggleMusic = async () => {
+    const audio = audioRef.current
+
+    if (!audio) {
+      return
+    }
+
+    if (audio.paused) {
+      try {
+        await audio.play()
+        setIsPlaying(true)
+      } catch {
+        setIsPlaying(false)
+      }
+      return
+    }
+
+    audio.pause()
+    setIsPlaying(false)
+  }
+
   return (
     <main className="portfolio-page">
       <div className="star-container" aria-hidden="true">
         <div id="stars" />
         <div id="stars2" />
         <div id="stars3" />
+      </div>
+
+      <div className="music-player" aria-label="Music player">
+        <div className="music-player__info">
+          <div className="music-player__title">click to play: late night coding</div>
+          <div className="music-player__artist">3am_lofi.mp3</div>
+        </div>
+
+        <button
+          className="music-player__button"
+          type="button"
+          onClick={toggleMusic}
+          aria-label={isPlaying ? 'Pause music' : 'Play music'}
+        >
+          {isPlaying ? '⏸' : '▶'}
+        </button>
+
+        <audio ref={audioRef} preload="none" src="/3am_lofi_vibes.mp3" onEnded={() => setIsPlaying(false)} />
       </div>
 
       <div className="portfolio-shell">
@@ -94,11 +170,11 @@ function App() {
         </section>
 
         <section className="about-card" id="about" aria-labelledby="about-title">
-          <h2 id="about-title">About me</h2>
+          <h2 id="about-title">About me 👾</h2>
           <p>
-            Hi, I’m Anna! 👋
+            Hi, I’m Anna! ♥︎
 
-            I’m a software engineer with roots in Venezuela 🇻🇪, now based in the US 🇺🇸. My first taste of coding was customizing Tumblr themes as a kid, which grew into a love for technology and solving problems. Outside of code, I love traveling and trying new foods.
+            I’m a software engineer with roots in Venezuela, now based in the US. My first taste of coding was customizing Tumblr themes as a kid, which grew into a love for technology and solving problems. Outside of code, I love traveling and trying new foods.
           </p>
 
           <button
@@ -106,8 +182,8 @@ function App() {
             type="button"
             onClick={() => {
               const link = document.createElement('a')
-              link.href = '/resume.pdf'
-              link.download = 'resume.pdf'
+              link.href = '/Anna_DelNegro_Resume_SWEII.pdf'
+              link.download = 'Anna_DelNegro_Resume_SWEII.pdf'
               link.click()
             }}
             aria-label="Download resume or CV"
@@ -155,12 +231,12 @@ function App() {
         </section>
 
         <section className="content-section section-work" id="work" aria-labelledby="work-title">
-          <h2 id="work-title">Work experience</h2>
+          <h2 id="work-title">Work experience 👩‍💻</h2>
           <Timeline data={workTimelineData} hideHeader endOffset={38} className="work-timeline" />
         </section>
 
         <section className="content-section section-projects" id="projects" aria-labelledby="projects-title">
-          <h2 id="projects-title">Selected projects</h2>
+          <h2 id="projects-title">Projects 🌠</h2>
           <div className="projects-stack">
             <div className="nhost-card">
               <div className="card-grid" />
@@ -624,6 +700,25 @@ function App() {
             </div>
           </div>
         </section>
+      </div>
+
+      <div className="dice-tooltip-wrap" aria-hidden={false}>
+        <Tooltip>
+          <TooltipTrigger>
+            <button
+              className="dice-button"
+              type="button"
+              aria-label="Show a random fun fact"
+              onMouseEnter={() => setDiceMessage(getRandomDiceMessage())}
+              onFocus={() => setDiceMessage(getRandomDiceMessage())}
+            >
+              🎲
+            </button>
+          </TooltipTrigger>
+          <TooltipContent className="dice-tooltip-content">
+            {diceMessage}
+          </TooltipContent>
+        </Tooltip>
       </div>
     </main>
   )
