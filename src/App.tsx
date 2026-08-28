@@ -143,6 +143,29 @@ function App() {
           </a>
         </section>
 
+        <section className="about-education-wrap" aria-label="Education">
+          <div className="notification" aria-label="Education">
+            <div className="notiglow" />
+            <div className="notiborderglow" />
+
+            <div className="notification-content">
+              <div className="notification-text">
+                <div className="notititle">University of Central Florida</div>
+                <div className="notibody">Bachelor of Science in Computer Science</div>
+                <div className="notibody">December 2025</div>
+              </div>
+
+              <div className="ucf-icon-wrapper">
+                <img
+                  className="ucf-icon"
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Seal_of_the_University_of_Central_Florida.svg/1280px-Seal_of_the_University_of_Central_Florida.svg.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+                  alt="UCF Logo"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="content-section section-work" id="work" aria-labelledby="work-title">
           <h2 id="work-title">Work experience</h2>
           <Timeline data={workTimelineData} hideHeader endOffset={38} className="work-timeline" />
@@ -158,7 +181,11 @@ function App() {
               <div className="card-header">
                 <div className="brand-wrapper">
                   <div className="logo-container">
-                    <span className="ucf-mark">UCF</span>
+                    <img
+                      className="project-ucf-logo"
+                      src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Seal_of_the_University_of_Central_Florida.svg/1280px-Seal_of_the_University_of_Central_Florida.svg.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+                      alt="UCF logo"
+                    />
                   </div>
 
                   <span className="brand-text">University of Central Florida</span>
@@ -253,7 +280,11 @@ function App() {
               <div className="card-header">
                 <div className="brand-wrapper">
                   <div className="logo-container">
-                    <span className="ucf-mark">UCF</span>
+                    <img
+                      className="project-ucf-logo"
+                      src="https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/002/582/766/datas/original.png"
+                      alt="Knight Hacks logo"
+                    />
                   </div>
 
                   <span className="brand-text">Knight Hacks</span>
