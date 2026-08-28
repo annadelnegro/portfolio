@@ -1461,21 +1461,30 @@
   }
 
   .section-projects .card-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
     margin-bottom: 16px;
     gap: 12px;
   }
 
   .section-projects .brand-wrapper {
+    width: 100%;
+    min-width: 0;
     gap: 10px;
   }
 
   .section-projects .logo-container {
-    min-width: 36px;
-    height: 36px;
+    width: 44px;
+    min-width: 44px;
+    flex: 0 0 44px;
+    border-radius: 10px;
+    height: 44px;
   }
 
   .section-projects .brand-text {
     font-size: 14px;
+    line-height: 1.15;
   }
 
   .section-projects .repo-title {
