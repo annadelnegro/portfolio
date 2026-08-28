@@ -347,6 +347,266 @@ function App() {
                 </div>
               </div>
             </div>
+
+            <div className="projects-spacer" aria-hidden="true" />
+
+            <div className="nhost-card">
+              <div className="card-grid" />
+              <div className="card-glow" />
+
+              <div className="card-header">
+                <div className="brand-wrapper">
+                  <div className="logo-container">
+                    <img
+                      className="project-ucf-logo"
+                      src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Seal_of_the_University_of_Central_Florida.svg/1280px-Seal_of_the_University_of_Central_Florida.svg.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+                      alt="UCF logo"
+                    />
+                  </div>
+
+                  <span className="brand-text">University of Central Florida</span>
+                </div>
+
+                <div className="action-buttons">
+                  <a
+                    className="btn-icon"
+                    href="https://github.com/annadelnegro/Waste-Not-Kitchen"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="View Waste-Not-Kitchen project on GitHub"
+                  >
+                    <svg
+                      className="icon github"
+                      viewBox="0 0 16 16"
+                      version="1.1"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div className="card-body">
+                <h3 className="repo-title">
+                  Waste-Not-Kitchen
+                  <span className="blinking-cursor" />
+                </h3>
+
+                <p className="repo-description">
+                  A web application that helps restaurants reduce food waste by connecting surplus meals with customers, donors, and people in need. Restaurants can list available plates, users can reserve or donate meals, and admins can manage reports through a role-based platform.
+                </p>
+
+                <div className="tag-wrapper">
+                  <div className="tech-badge" data-tech="PHP">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+                      alt="PHP"
+                    />
+                  </div>
+
+                  <div className="tech-badge" data-tech="MySQL">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                      alt="MySQL"
+                    />
+                  </div>
+
+                  <div className="tech-badge" data-tech="JavaScript">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                      alt="JavaScript"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="projects-spacer" aria-hidden="true" />
+
+            <div className="nhost-card">
+              <div className="card-grid" />
+              <div className="card-glow" />
+
+              <div className="card-header">
+                <div className="brand-wrapper">
+                  <div className="logo-container">
+                    <img
+                      className="project-ucf-logo"
+                      src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Seal_of_the_University_of_Central_Florida.svg/1280px-Seal_of_the_University_of_Central_Florida.svg.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+                      alt="UCF logo"
+                    />
+                  </div>
+
+                  <span className="brand-text">University of Central Florida</span>
+                </div>
+
+                <div className="action-buttons">
+                  <a
+                    className="btn-icon"
+                    href="https://github.com/annadelnegro/Xplora"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="View Xplora.fun project on GitHub"
+                  >
+                    <svg
+                      className="icon github"
+                      viewBox="0 0 16 16"
+                      version="1.1"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div className="card-body">
+                <h3 className="repo-title">
+                  Xplora.fun
+                  <span className="blinking-cursor" />
+                </h3>
+
+                <p className="repo-description">
+                  Full-stack travel planning application that lets users organize trips, flights, accommodations, and activities in one place. Users can create and customize trips, manage their profiles, upload photos, and securely recover accounts through email verification and password reset features.
+                </p>
+
+                <div className="tag-wrapper">
+                  <div className="tech-badge" data-tech="JavaScript">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                      alt="JavaScript"
+                    />
+                  </div>
+
+                  <div className="tech-badge" data-tech="TypeScript">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                      alt="TypeScript"
+                    />
+                  </div>
+
+                  <div className="tech-badge" data-tech="Node.js">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                      alt="Node.js"
+                    />
+                  </div>
+
+                  <div className="tech-badge" data-tech="Express.js">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+                      alt="Express.js"
+                    />
+                  </div>
+
+                  <div className="tech-badge" data-tech="MongoDB">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+                      alt="MongoDB"
+                    />
+                  </div>
+
+                  <div className="tech-badge" data-tech="AWS">
+                    <img
+                      className="aws-logo"
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg"
+                      alt="AWS"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="projects-spacer" aria-hidden="true" />
+
+            <div className="nhost-card">
+              <div className="card-grid" />
+              <div className="card-glow" />
+
+              <div className="card-header">
+                <div className="brand-wrapper">
+                  <div className="logo-container">
+                    <img
+                      className="project-ucf-logo"
+                      src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Seal_of_the_University_of_Central_Florida.svg/1280px-Seal_of_the_University_of_Central_Florida.svg.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+                      alt="UCF logo"
+                    />
+                  </div>
+
+                  <span className="brand-text">University of Central Florida</span>
+                </div>
+
+                <div className="action-buttons">
+                  <a
+                    className="btn-icon"
+                    href="https://github.com/annadelnegro/ConnectFour"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="View ConnectFour project on GitHub"
+                  >
+                    <svg
+                      className="icon github"
+                      viewBox="0 0 16 16"
+                      version="1.1"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div className="card-body">
+                <h3 className="repo-title">
+                  ConnectFour
+                  <span className="blinking-cursor" />
+                </h3>
+
+                <p className="repo-description">
+                  Android Connect Four game designed for local two-player gameplay. Players take turns dropping discs into a responsive game board, with automatic win detection for horizontal, vertical, and diagonal matches, visual feedback, animations, and an option to quickly restart the game.
+                </p>
+
+                <div className="tag-wrapper">
+                  <div className="tech-badge" data-tech="Java">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                      alt="Java"
+                    />
+                  </div>
+
+                  <div className="tech-badge" data-tech="Android Studio">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg"
+                      alt="Android Studio"
+                    />
+                  </div>
+
+                  <div className="tech-badge" data-tech="Android">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg"
+                      alt="Android"
+                    />
+                  </div>
+
+                  <div className="tech-badge" data-tech="XML">
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xml/xml-original.svg"
+                      alt="XML"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
