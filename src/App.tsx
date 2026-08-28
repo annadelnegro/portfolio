@@ -100,14 +100,56 @@ function getRandomDiceMessage() {
 
 function App() {
   const [diceMessage, setDiceMessage] = useState(() => getRandomDiceMessage())
+  const [isPhoneViewport, setIsPhoneViewport] = useState(false)
+  const [isMobileDiceOpen, setIsMobileDiceOpen] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
+  const mobileDiceRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = 0.08
     }
   }, [])
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 640px)')
+    const syncViewport = () => {
+      setIsPhoneViewport(mediaQuery.matches)
+      if (!mediaQuery.matches) {
+        setIsMobileDiceOpen(false)
+      }
+    }
+
+    syncViewport()
+    mediaQuery.addEventListener('change', syncViewport)
+
+    return () => {
+      mediaQuery.removeEventListener('change', syncViewport)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!isPhoneViewport || !isMobileDiceOpen) {
+      return
+    }
+
+    const handleOutsideTap = (event: PointerEvent) => {
+      const targetNode = event.target as Node | null
+
+      if (targetNode && mobileDiceRef.current?.contains(targetNode)) {
+        return
+      }
+
+      setIsMobileDiceOpen(false)
+    }
+
+    document.addEventListener('pointerdown', handleOutsideTap)
+
+    return () => {
+      document.removeEventListener('pointerdown', handleOutsideTap)
+    }
+  }, [isMobileDiceOpen, isPhoneViewport])
 
   const toggleMusic = async () => {
     const audio = audioRef.current
@@ -128,6 +170,11 @@ function App() {
 
     audio.pause()
     setIsPlaying(false)
+  }
+
+  const handleMobileDiceTap = () => {
+    setDiceMessage(getRandomDiceMessage())
+    setIsMobileDiceOpen(true)
   }
 
   return (
@@ -166,7 +213,23 @@ function App() {
         </section>
 
         <section className="dock-wrap" aria-label="Primary navigation">
-          <FloatingDock items={dockItems} desktopClassName="portfolio-dock" />
+          <div className="dock-floating-shell">
+            <FloatingDock items={dockItems} desktopClassName="portfolio-dock" />
+          </div>
+
+          <nav className="mobile-word-nav" aria-label="Mobile navigation links">
+            {dockItems.map((item) => (
+              <a
+                key={`mobile-nav-${item.title}`}
+                href={item.href}
+                target={item.target}
+                rel={item.rel}
+                className="mobile-word-nav__link"
+              >
+                {item.title}
+              </a>
+            ))}
+          </nav>
         </section>
 
         <section className="about-card" id="about" aria-labelledby="about-title">
@@ -296,6 +359,15 @@ function App() {
                   <span className="blinking-cursor" />
                 </h3>
 
+                <a
+                  className="repo-mobile-link"
+                  href="https://www.cecs.ucf.edu/SeniorDesignShowcase/team/army-reserve-mercury-2/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit Final Demo Video
+                </a>
+
                 <p className="repo-description">
                   Owned the design and implementation of an automated backend data pipeline using Python, AWS, and PostgreSQL
                   to process large-scale audit logs, improve data observability, and support scalable analytics workflows.
@@ -383,6 +455,15 @@ function App() {
                   <span className="blinking-cursor" />
                 </h3>
 
+                <a
+                  className="repo-mobile-link"
+                  href="https://github.com/annadelnegro/KnightLint"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit GitHub Repo
+                </a>
+
                 <p className="repo-description">
                   AI-powered code review assistant that leverages Google Gemini to analyze GitHub pull requests, flagging security vulnerabilities, code quality issues, and performance bottlenecks. It provides actionable recommendations and lets developers edit, reanalyze, and commit fixes directly from the browser.
                 </p>
@@ -460,6 +541,15 @@ function App() {
                   <span className="blinking-cursor" />
                 </h3>
 
+                <a
+                  className="repo-mobile-link"
+                  href="https://github.com/annadelnegro/Waste-Not-Kitchen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit GitHub Repo
+                </a>
+
                 <p className="repo-description">
                   A web application that helps restaurants reduce food waste by connecting surplus meals with customers, donors, and people in need. Restaurants can list available plates, users can reserve or donate meals, and admins can manage reports through a role-based platform.
                 </p>
@@ -536,6 +626,15 @@ function App() {
                   Xplora.fun
                   <span className="blinking-cursor" />
                 </h3>
+
+                <a
+                  className="repo-mobile-link"
+                  href="https://github.com/annadelnegro/Xplora"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit GitHub Repo
+                </a>
 
                 <p className="repo-description">
                   Full-stack travel planning application that lets users organize trips, flights, accommodations, and activities in one place. Users can create and customize trips, manage their profiles, upload photos, and securely recover accounts through email verification and password reset features.
@@ -636,6 +735,15 @@ function App() {
                   <span className="blinking-cursor" />
                 </h3>
 
+                <a
+                  className="repo-mobile-link"
+                  href="https://github.com/annadelnegro/ConnectFour"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit GitHub Repo
+                </a>
+
                 <p className="repo-description">
                   Android Connect Four game designed for local two-player gameplay. Players take turns dropping discs into a responsive game board, with automatic win detection for horizontal, vertical, and diagonal matches, visual feedback, animations, and an option to quickly restart the game.
                 </p>
@@ -703,22 +811,42 @@ function App() {
       </div>
 
       <div className="dice-tooltip-wrap" aria-hidden={false}>
-        <Tooltip>
-          <TooltipTrigger>
-            <button
-              className="dice-button"
-              type="button"
-              aria-label="Show a random fun fact"
-              onMouseEnter={() => setDiceMessage(getRandomDiceMessage())}
-              onFocus={() => setDiceMessage(getRandomDiceMessage())}
-            >
-              🎲
-            </button>
-          </TooltipTrigger>
-          <TooltipContent className="dice-tooltip-content">
-            {diceMessage}
-          </TooltipContent>
-        </Tooltip>
+        <div className="dice-desktop">
+          <Tooltip>
+            <TooltipTrigger>
+              <button
+                className="dice-button"
+                type="button"
+                aria-label="Show a random fun fact"
+                onMouseEnter={() => setDiceMessage(getRandomDiceMessage())}
+                onFocus={() => setDiceMessage(getRandomDiceMessage())}
+              >
+                🎲
+              </button>
+            </TooltipTrigger>
+            <TooltipContent className="dice-tooltip-content">
+              {diceMessage}
+            </TooltipContent>
+          </Tooltip>
+        </div>
+
+        <div className="dice-mobile" ref={mobileDiceRef}>
+          <button
+            className="dice-button"
+            type="button"
+            aria-label="Show a random fun fact"
+            aria-expanded={isMobileDiceOpen}
+            onClick={handleMobileDiceTap}
+          >
+            🎲
+          </button>
+
+          {isMobileDiceOpen && (
+            <div role="tooltip" className="dice-tooltip-content dice-tooltip-content--mobile">
+              {diceMessage}
+            </div>
+          )}
+        </div>
       </div>
     </main>
   )

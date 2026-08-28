@@ -309,6 +309,10 @@
   justify-content: center;
 }
 
+.mobile-word-nav {
+  display: none;
+}
+
 .portfolio-dock {
   background: #99c5ff !important;
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -451,6 +455,10 @@
   right: 18px;
   bottom: 18px;
   z-index: 80;
+}
+
+.dice-mobile {
+  display: none;
 }
 
 .dice-button {
@@ -1089,6 +1097,10 @@
   max-width: 540px;
 }
 
+.section-projects .repo-mobile-link {
+  display: none;
+}
+
 .section-projects .tag-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -1325,5 +1337,246 @@
   .timeline-date {
     margin-top: 3px;
     font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .portfolio-page {
+    padding: 0 8px;
+  }
+
+  .portfolio-shell {
+    width: calc(100vw - 16px);
+    min-height: calc(100vh - 16px);
+    margin-top: 16px;
+    padding: 20px 14px 28px;
+    gap: 18px;
+    border-radius: 24px 24px 0 0;
+  }
+
+  .hero-card {
+    width: calc(100% + 28px);
+    margin-inline: -14px;
+    height: 210px;
+  }
+
+  .hero-copy {
+    padding-left: 14px;
+    padding-top: 22px;
+    padding-right: 14px;
+    transform: translateY(28px);
+  }
+
+  .hero-card h1 {
+    font-size: clamp(2.25rem, 12vw, 3rem);
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .dock-wrap {
+    transform: none;
+    justify-content: stretch;
+  }
+
+  .dock-floating-shell {
+    display: none;
+  }
+
+  .mobile-word-nav {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 12px;
+    background: rgba(15, 17, 23, 0.16);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .mobile-word-nav__link {
+    text-decoration: none;
+    color: #0f1117;
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1;
+    padding: 8px 10px;
+    border-radius: 999px;
+    background: #eeeeee;
+    border: 1px solid rgba(0, 0, 0, 0.14);
+  }
+
+  .about-card,
+  .content-section,
+  .skills-section {
+    width: 100%;
+    padding: 20px 14px 24px;
+    min-height: auto;
+  }
+
+  .notification {
+    width: min(100%, 320px);
+    height: 92px;
+  }
+
+  .notititle {
+    font-size: 0.92rem;
+    padding: 0.5rem 0.25rem 0.28rem 1rem;
+  }
+
+  .notibody {
+    font-size: 0.75rem;
+    padding: 0 1rem;
+  }
+
+  .ucf-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .about-card h2,
+  .section-projects h2 {
+    font-size: clamp(1.6rem, 8vw, 2.3rem);
+    margin-bottom: 14px;
+  }
+
+  .about-card p,
+  .section-projects p,
+  .skills-section p {
+    font-size: 0.95rem;
+  }
+
+  .section-projects {
+    gap: 18px;
+  }
+
+  .section-projects .projects-spacer {
+    height: 18px;
+  }
+
+  .section-projects .nhost-card {
+    padding: 20px 16px;
+  }
+
+  .section-projects .card-header {
+    margin-bottom: 16px;
+    gap: 12px;
+  }
+
+  .section-projects .brand-wrapper {
+    gap: 10px;
+  }
+
+  .section-projects .logo-container {
+    min-width: 36px;
+    height: 36px;
+  }
+
+  .section-projects .brand-text {
+    font-size: 14px;
+  }
+
+  .section-projects .repo-title {
+    font-size: 18px;
+  }
+
+  .section-projects .action-buttons {
+    display: none;
+  }
+
+  .section-projects .repo-mobile-link {
+    display: inline-flex;
+    margin: 0 0 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #99c5ff;
+    text-decoration: underline;
+    text-decoration-color: rgba(153, 197, 255, 0.7);
+    text-underline-offset: 3px;
+  }
+
+  .section-projects .repo-description {
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+
+  .section-projects .tag-wrapper {
+    gap: 8px;
+  }
+
+  .section-projects .tech-badge {
+    padding: 4px 7px;
+    font-size: 11px;
+  }
+
+  .section-projects .tech-badge img {
+    width: 15px;
+    height: 15px;
+  }
+
+  .music-player {
+    left: 10px;
+    bottom: 10px;
+    padding: 8px 10px;
+    gap: 8px;
+    max-width: min(88vw, 250px);
+  }
+
+  .music-player__title {
+    font-size: 0.66rem;
+  }
+
+  .music-player__artist {
+    font-size: 0.58rem;
+  }
+
+  .music-player__button {
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+    font-size: 0.8rem;
+  }
+
+  .dice-tooltip-wrap {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .dice-desktop {
+    display: none;
+  }
+
+  .dice-mobile {
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dice-button {
+    font-size: 1.3rem;
+  }
+
+  .dice-tooltip-content {
+    max-width: 210px;
+    font-size: 0.74rem;
+    padding: 8px 10px;
+  }
+
+  .dice-tooltip-content--mobile {
+    bottom: calc(100% + 8px);
+  }
+
+  .skills-section .card {
+    min-height: 230px;
+    box-shadow: -12px 12px 0px -4px #0f1117;
+  }
+
+  .skills-section .tag__name {
+    font-size: 0.94rem;
+    padding: 5px 16px 7px;
+    margin: 6px 5px 6px 0;
   }
 }
