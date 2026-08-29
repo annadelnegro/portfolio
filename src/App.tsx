@@ -105,6 +105,12 @@ function getRandomDiceMessage() {
   return diceMessages[Math.floor(Math.random() * diceMessages.length)]
 }
 
+const lastShippedLabel = new Date(__LAST_UPDATED__).toLocaleDateString('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+})
+
 const libraryProjects: LibraryProject[] = [
   {
     id: 'xplora',
@@ -292,6 +298,10 @@ function App() {
             <h1 id="intro-name">Anna Del Negro</h1>
             <p className="subtitle">SWE @ JP Morgan</p>
           </div>
+
+          <p className="last-shipped-badge" title="Date of the last commit shipped to production">
+            🛰️ last shipped {lastShippedLabel}
+          </p>
         </section>
 
         <section className="dock-wrap" aria-label="Primary navigation">

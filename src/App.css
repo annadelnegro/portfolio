@@ -303,6 +303,25 @@
   line-height: 1.2;
 }
 
+.last-shipped-badge {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  z-index: 2;
+  margin: 0;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f9dc89;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
 .dock-wrap {
   width: 100%;
   display: flex;
@@ -1649,6 +1668,13 @@
     font-size: 1.15rem;
   }
 
+  .last-shipped-badge {
+    top: 10px;
+    right: 10px;
+    font-size: 0.6rem;
+    padding: 5px 9px;
+  }
+
   .about-card {
     width: 100%;
     padding: 34px 28px 40px;
@@ -1759,6 +1785,13 @@
 
   .subtitle {
     font-size: 1rem;
+  }
+
+  .last-shipped-badge {
+    top: 8px;
+    right: 8px;
+    font-size: 0.56rem;
+    padding: 4px 8px;
   }
 
   .dock-wrap {
