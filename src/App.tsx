@@ -2,8 +2,10 @@ import './App.css'
 import { FloatingDock } from './components/ui/floating-dock'
 import { Timeline } from './components/ui/timeline'
 import { Tooltip, TooltipContent, TooltipTrigger } from './components/ui/tooltip'
-import { useEffect, useRef, useState } from 'react'
+import { LibraryAccordion, LibraryBrowserCard, type LibraryProject } from './components/library-browser-card'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import {
+  IconBook2,
   IconBrandGithub,
   IconBrandLinkedin,
   IconBriefcase,
@@ -21,6 +23,11 @@ const dockItems = [
     title: 'Projects',
     icon: <IconFolders className="dock-icon" />, 
     href: '#projects',
+  },
+  {
+    title: 'Library',
+    icon: <IconBook2 className="dock-icon" />,
+    href: '#library',
   },
   {
     title: 'Email',
@@ -98,6 +105,21 @@ function getRandomDiceMessage() {
   return diceMessages[Math.floor(Math.random() * diceMessages.length)]
 }
 
+const libraryProjects: LibraryProject[] = [
+  {
+    id: 'xplora',
+    tabLabel: 'Xplora',
+    url: 'xplora.fun',
+    images: Array.from({ length: 11 }, (_, index) => `/Xplora-${index + 1}.jpg`),
+  },
+  {
+    id: 'knightlint',
+    tabLabel: 'KnightLint',
+    url: 'knightlint.dev',
+    images: Array.from({ length: 8 }, (_, index) => `/K-${index + 1}.jpg`),
+  },
+]
+
 function App() {
   const [diceMessage, setDiceMessage] = useState(() => getRandomDiceMessage())
   const [isPhoneViewport, setIsPhoneViewport] = useState(false)
@@ -105,12 +127,72 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const mobileDiceRef = useRef<HTMLDivElement | null>(null)
+  const libraryTrackRef = useRef<HTMLDivElement | null>(null)
+  const libraryItemRefs = useRef<Array<HTMLDivElement | null>>([])
+  const libraryRafRef = useRef<number | null>(null)
 
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = 0.08
     }
   }, [])
+
+  const updateLibrarySpotlight = useCallback(() => {
+    const container = libraryTrackRef.current
+    if (!container) {
+      return
+    }
+
+    // Spotlight scaling is a desktop-only affordance; mobile relies on plain swipeable snap scrolling.
+    if (window.matchMedia('(max-width: 640px)').matches) {
+      libraryItemRefs.current.forEach((item) => {
+        item?.style.removeProperty('--spotlight-scale')
+        item?.style.removeProperty('--spotlight-opacity')
+      })
+      return
+    }
+
+    const containerRect = container.getBoundingClientRect()
+    const containerCenter = containerRect.left + containerRect.width / 2
+
+    libraryItemRefs.current.forEach((item) => {
+      if (!item) {
+        return
+      }
+
+      const itemRect = item.getBoundingClientRect()
+      const itemCenter = itemRect.left + itemRect.width / 2
+      const distance = Math.abs(containerCenter - itemCenter)
+      const maxDistance = containerRect.width / 2 + itemRect.width / 2
+      const proximity = 1 - Math.min(distance / maxDistance, 1)
+
+      item.style.setProperty('--spotlight-scale', (0.86 + proximity * 0.14).toFixed(3))
+      item.style.setProperty('--spotlight-opacity', (0.4 + proximity * 0.6).toFixed(3))
+    })
+  }, [])
+
+  const handleLibraryScroll = useCallback(() => {
+    if (libraryRafRef.current) {
+      return
+    }
+
+    libraryRafRef.current = requestAnimationFrame(() => {
+      updateLibrarySpotlight()
+      libraryRafRef.current = null
+    })
+  }, [updateLibrarySpotlight])
+
+  useEffect(() => {
+    updateLibrarySpotlight()
+    window.addEventListener('resize', handleLibraryScroll)
+
+    return () => {
+      window.removeEventListener('resize', handleLibraryScroll)
+      if (libraryRafRef.current) {
+        cancelAnimationFrame(libraryRafRef.current)
+      }
+    }
+  }, [handleLibraryScroll, updateLibrarySpotlight])
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 640px)')
@@ -780,6 +862,28 @@ function App() {
               </div>
             </div>
           </div>
+        </section>
+
+        <section className="content-section section-library" id="library" aria-labelledby="library-title">
+          <h2 id="library-title">Library 📚</h2>
+
+          {isPhoneViewport ? (
+            <LibraryAccordion projects={libraryProjects} />
+          ) : (
+            <div className="library-track" ref={libraryTrackRef} onScroll={handleLibraryScroll}>
+              {libraryProjects.map((project, index) => (
+                <div
+                  key={project.id}
+                  className="library-card-wrap"
+                  ref={(el) => {
+                    libraryItemRefs.current[index] = el
+                  }}
+                >
+                  <LibraryBrowserCard project={project} />
+                </div>
+              ))}
+            </div>
+          )}
         </section>
 
         <section className="skills-section" id="contact" aria-labelledby="skills-title">
